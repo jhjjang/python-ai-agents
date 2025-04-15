@@ -1,7 +1,11 @@
 import re
+import os
+from dotenv import load_dotenv
 from openai import AsyncOpenAI, OpenAI
 
-OPENAI_API_KEY = ""
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 client = AsyncOpenAI(
     api_key=OPENAI_API_KEY,  
@@ -35,4 +39,3 @@ async def llm_call_async(prompt: str,  model: str = "gpt-4o-mini") -> str:
 if __name__ == "__main__":
     test = llm_call("안녕")
     print(test)
-
